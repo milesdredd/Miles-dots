@@ -1,0 +1,73 @@
+MenuBar=Disabled
+
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
+
+[Baloo KEditCommentDialog]
+1920x1080 screen: Window-Maximized=true
+
+[CompactMode]
+IconSize=48
+PreviewSize=192
+
+[DetailsMode]
+AlternatingBackgrounds=false
+PreviewSize=80
+
+[ExtractDialog]
+1920x1080 screen: Height=1014
+1920x1080 screen: Width=1283
+2 screens: Height=1017
+2 screens: Width=1280
+DirHistory[$e]=$HOME/temp/rn11/,$HOME/sih/New Folder/,$HOME/sih/project/,/run/media/milesdredd/HP P500/cycle/,/run/media/milesdredd/HP P500/Miles/,$HOME/temp/New Folder/,$HOME/Downloads/book/,$HOME/Documents/Notes clg/pervious year notes (pyn)/,/run/media/milesdredd/Files/fh4/Forza Horizon 4 - Ultimate Edition - [@X_X_Admin]/Forza Horizon 4 - Ultimate Edition - [@X_X_Admin]/
+
+[General]
+AutoExpandFolders=true
+DoubleClickViewAction=open_terminal
+GlobalViewProps=false
+HideXTrashFile=true
+ShowStatusBar=FullWidth
+ShowZoomSlider=true
+Version=202
+ViewPropsTimestamp=2023,4,26,16,58,48.324
+
+[IconsMode]
+IconSize=80
+MaximumTextLines=1
+PreviewSize=128
+
+[InformationPanel]
+dateFormat=ShortFormat
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[KPropertiesDialog]
+2560x1080 screen: Window-Maximized=true
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Enabled
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+ToolButtonStyle=IconOnly
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,ffmpegthumbs
+
+[Search]
+What=Content
+
+[Shortcut Schemes]
+Current Scheme=Default
+
+[Toolbar mainToolBar]
+IconSize=16
+ToolButtonStyle=IconOnly
+
+[ViewPropertiesDialog]
+1440x810 screen: Window-Maximized=true
+1920x1080 screen: Height=462
+1920x1080 screen: Width=381
