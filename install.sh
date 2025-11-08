@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script sets up the dotfiles by creating symbolic links.
+# This script sets up the dotfiles by copying them to their correct locations.
 # It also installs missing packages for Arch Linux (using pacman or yay).
 
 # --- Helper function to check if a command exists ---
@@ -20,23 +20,24 @@ install_package() {
     fi
 }
 
-# --- Symlinking function ---
-link_config() {
+# --- Copying function ---
+copy_config() {
     local source_path=$1
     local target_path=$2
     local config_name=$3
 
-    # Back up existing config if it's a real file/directory and not a symlink
-    if [ -e "$target_path" ] && [ ! -L "$target_path" ]; then
+    # Back up existing config if it's a real file/directory
+    if [ -e "$target_path" ]; then
         echo "Backing up existing $config_name config..."
-        mv "$target_path" "${target_path}.bak_\$(_date +%Ymt%d_%H_%M%S)"
+        mv "$target_path" "${target_path}.bak_$(date +%Y%m%d_%H%M%S)"
     fi
 
-    # Create the symlink
-    echo "Creating symlink for $config_name..."
-    # Ensure parent directory of target exists
+    # Create the parent directory if it doesn't exist
     mkdir -p "$(dirname "$target_path")"
-    ln -sfn "$source_path" "$target_path"
+
+    # Copy the files
+    echo "Copying $config_name..."
+    cp -r "$source_path" "$target_path"
 }
 
 # --- Main setup ---
@@ -56,18 +57,18 @@ for pkg in "${!configs[@]}"; do
     else
         echo "$pkg is already installed."
     fi
-    link_config "$HOME/dotfiles/.config/$pkg" "${configs[$pkg]}" "$pkg"
+    copy_config "$HOME/dotfiles/.config/$pkg" "${configs[$pkg]}" "$pkg"
 done
 
 # --- Handle other files ---
 
 # Scripts in bin
-link_config "$HOME/dotfiles/.local/share/bin" "$HOME/.local/share/bin" "bin scripts"
+copy_config "$HOME/dotfiles/.local/share/bin" "$HOME/.local/share/bin" "bin scripts"
 
 # mimeapps.list
-link_config "$HOME/dotfiles/.config/mimeapps.list" "$HOME/.config/mimeapps.list" "mimeapps.list"
+copy_config "$HOME/dotfiles/.config/mimeapps.list" "$HOME/.config/mimeapps.list" "mimeapps.list"
 
 # dolphinrc
-link_config "$HOME/dotfiles/.config/dolphinrc" "$HOME/.config/dolphinrc" "dolphinrc"
+copy_config "$HOME/dotfiles/.config/dolphinrc" "$HOME/.config/dolphinrc" "dolphinrc"
 
 echo "Dotfiles setup complete!"

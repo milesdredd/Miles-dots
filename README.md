@@ -21,7 +21,7 @@ To install these configurations, clone this repository and run the `install.sh` 
 git clone https://github.com/milesdredd/Miles-dots.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
-b``
+```
 
 The script will:
 1.  Install any missing applications (`niri`, `rofi`, `eww`) using `yay` or `pacman`.
