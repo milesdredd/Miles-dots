@@ -13,7 +13,7 @@ This repository contains my personal configuration files (dotfiles) for various 
 
 ## Installation
 
-These dotfiles are managed via an installation script that creates symbolic links.
+These dotfiles are managed via an installation script that copies them to their correct locations.
 
 To install these configurations, clone this repository and run the `install.sh` script:
 
@@ -26,8 +26,8 @@ cd ~/dotfiles
 The script will:
 1.  Install any missing applications (`niri`, `rofi`, `eww`) using `yay` or `pacman`.
 2.  Back up any existing configuration files in your `~/.config` directory.
-3.  Create symbolic links from this repository to the appropriate locations in your home directory.
+3.  Copy the configuration files from this repository to the appropriate locations in your home directory.
 
 ## Usage
 
-Because this setup uses symbolic links, any changes you make to the configuration files within this repository will be applied immediately. You can edit the files here, and the changes will be reflected in your system's configuration.
+Because this setup copies the files, any changes you make to the configuration files within this repository will **not** be applied automatically. You will need to run the `install.sh` script again to apply any changes you make here.
