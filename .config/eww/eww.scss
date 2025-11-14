@@ -3,28 +3,41 @@
 * { all: unset; }
 
 * {
-  font-family: "SF Pro Display";
+  font-family: "SF Pro Display","JetBrainsMono Nerd Font propo";
   font-size: 16px;
   font-weight:600;
   transition: out 0.5s ease-in-out;
 }
+
 .box-in{
     margin: 0px 0px 0px 4px;
     padding: 0px 0px 0px 0px;
 }
+.shadow{
+    text-shadow:
+    0px -2px 4px rgba(0, 0, 0, 1),
+    0px 4px 4px rgba(0, 0, 0, 1);
+}
 .plate{
-    border: 3px solid #222222;
+    border: 1px solid #1c1c1c;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
     margin: 2px 27px 6px 27px;
     padding: 0px 6px 0px 6px;
     border-radius: 9px;
-    background-color: #222222;
+    ;background-color: #333333;
+    background-color: #1c1c1c;
 }
 
 .border{
-   border:2px solid #444444;
+   border:1px solid #444444;
+   font-family: "JetBrainsMono Nerd Font";
    border-radius: 10px;
-   background-color: #444444;
+   padding: 0px 4px;
+   //background-color: #474747;
+
+   &:hover{
+       border:1px solid #858585;
+   }
 }
 
 window#bar {
@@ -108,9 +121,7 @@ window#bar {
     color: #10c72f;
     
 }
-.or{
-    box-shadow: 0px 9px 1px rgba(0, 0, 0, 0.9);
-}
+
 
 .big{
     font-size:18px;
@@ -150,22 +161,21 @@ window#bar {
 
 }
 .B-prog-panel{
-    border-radius: 7px;
+    border-radius: 8px;
     >trough{
-        background-color: #515151;
+        //border: 2px solid #7d7d7d;
+        background-color: #3b3b3b;
         min-height: 23px;
         min-width: 63px;
         border-radius: 7px;
-        
-        
     }
     .left,.top,{
             margin: 2px;
             background-color: #8cc640;
             min-height: 19px;
             min-width: 1px;
-            border-radius: 5px;;    
-            box-shadow:0px 0px 5px rgba(0, 0, 0, 0.9);  
+            border-radius: 5px;
+            box-shadow:0px 0px 3px rgba(0, 0, 0, 0.9);
         }
 
 }

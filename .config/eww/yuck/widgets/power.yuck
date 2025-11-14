@@ -5,13 +5,15 @@
         :onhoverlost "eww update pow=false"
         (box :space-evenly false :spacing 6
             
-            (revealer :reveal pow :transition "slideleft" :duration "300ms"
+            (revealer :reveal pow :transition "slideright" :duration "600ms"
                 (box :spacing 5 :space-evenly true
-                    (button :tooltip "shutdown" :width 30 :class "buton" :onclick "sudo systemctl poweroff"  (label :class "red" :text ""))
-                    (button :tooltip "lock" :class "buton" :onclick "hyprlock &" (label :text ""))
-                    (button :tooltip "<nothing>" :class "buton" (label :text "dd"))
+                    (button :tooltip "shutdown" :width 30 :class "border" :onclick "sudo systemctl poweroff"  (label :class "red" :text ""))
+                    (button :tooltip "lock" :class "border" :onclick "hyprlock &" (label :text ""))
+                    (button :tooltip "configs" :onclick "kate ~/.config/niri ~/.config/eww &" :class "border" (label :text ""))
 
-                    (button :class "buton"  :tooltip "reboot" :onclick "systemctl reboot" (label :class "orange" :text ""))
+                    (button :tooltip "change wallpaper" :onclick "/home/milesdredd/.config/niri/wallpaper.sh n" :onrightclick "/home/milesdredd/.config/niri/wallpaper.sh p" :class "border" (label :text ""))
+
+                    (button :class "border"  :tooltip "reboot" :onclick "systemctl reboot" (label :class "orange" :text ""))
                 )
             )
             (box 
@@ -19,7 +21,7 @@
                     :rotate 0
                     :transform-origin-x 15
                     :transform-origin-y 15
-                    (label :width 30 :style "font-size: 17px;" :text "")
+                    (label :width 30 :style "font-size: 17px;" :class "shadow" :text "")
                 )   
             )
         )

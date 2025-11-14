@@ -43,19 +43,17 @@
             (label :text "↑${EWW_NET.wlp8s0?.NET_UP ?: "0 B/s"} ")
         )
         (box 
-            :class ""
-            (label  :class "wifi" :text "${wifi.icon} ")
+            :class "border"
+            (label  :class "wifi" :text "${wifi.icon}")
         )
     )
 )
 
 (defwidget Bluetooth []
-    (eventbox 
-        (box :space-evenly true :spacing 8 :class ""
-            
-                (box :class ""
-                    (button :width 0 :class "b_buton" :onclick "eww open bluetooth-panel" :onrightclick "eww close bluetooth-panel" (label :class "blue " :text " -󰂯- "))
-                )
+    (button :class "border" :onclick "eww open bluetooth-panel" :onrightclick "eww close bluetooth-panel"
+        (label
+            :width 16
+            :text "󰂯"
         )
     )
 )
@@ -66,8 +64,8 @@
             
             :icon-size 18
             :spacing 2
-            :space-evenly true
-            :width 30
+            :space-evenly false
+            :width 10
             :prepend-new 0
     ))
 )

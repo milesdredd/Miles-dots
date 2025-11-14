@@ -65,17 +65,17 @@
         
             (box 
                 (circular-progress
-                :width 40
+                :width 30
                 :class "circ_cpu"
                 :value "${EWW_CPU.avg}"
-                :thickness 4
+                :thickness 10
                 )
             )
             (box :halign "center" :space-evenly true
                 (label
 					:style "font-size: 20px;"
-                    :class "big"
-                    :text "󰍛  "
+                    :class "shadow"
+                    :text "󰍛"
                 )
             )
             
@@ -84,15 +84,15 @@
         
             (box  
                 (circular-progress
-                :width 40
+                :width 30
                 :class "circ_cpu or"
-                :value "${EWW_RAM.used_mem_perc}"
-                :thickness 4
+                :value "${gpu}"
+                :thickness 10
                 )
             )
             (box :halign "center" :space-evenly true
-                (label  :style "font-size: 20px;"
-                    
+                (label  :style "font-size: 15px;"
+                    :class "shadow"
                     :text ""
                 )
             )
@@ -102,22 +102,24 @@
         
             (box  
                 (circular-progress
-                :width 40
+                :width 30
                 :class "circ_cpu or"
                 :value "${EWW_RAM.used_mem_perc}"
-                :thickness 4
+                :thickness 10
                 )
             )
             (box :halign "center" :space-evenly true
-                (label  :style "font-size: 20px;"
-                    
+                (label  :style "font-size: 17px;"
+                    :class "shadow"
                     :text "󰘚"
                 )
             )
         )
         (label :text " ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°C")
-        (box :class "border" :spacing 5
+        (box :class "border" :spacing 0
+
                 (label :text {fan1})
+                (label :text "")
                 (label :text {fan2})
             )
 		)	

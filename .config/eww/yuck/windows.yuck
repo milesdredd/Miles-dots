@@ -1,12 +1,13 @@
 (defwindow bar
   :monitor "eDP-1"
   :geometry (geometry :x "0px" :y "0%" :width "100%" :height "30px")
-  :anchor "center"
+  :anchor "top center"
   :exclusive true
   :stacking "fg"
-  ;:windowtype "normal"
+  :namespace "top-panel"
+  :windowtype "dock"
   :visible true
-  :type "normal"
+  :type "dock"
   (bar1 :orientation "h")
 )
 
