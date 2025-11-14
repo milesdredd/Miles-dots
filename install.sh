@@ -1,74 +1,70 @@
 #!/bin/bash
 
-# This script sets up the dotfiles by copying them to their correct locations.
-# It also installs missing packages for Arch Linux (using pacman or yay).
+# Dotfiles installer for Miles-dots
+set -e
 
-# --- Helper function to check if a command exists ---
+SOURCE_DIR="/usr/share/miles-dots-git"
+
+# Helper to check commands
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# --- Package installation ---
+# Install package
 install_package() {
     local package=$1
+
     if command_exists yay; then
         echo "Installing $package with yay..."
         yay -S --noconfirm $package
     else
         echo "Installing $package with pacman..."
-        echo 'ubuntum' | sudo -S pacman -S --noconfirm $package
+        sudo pacman -S --noconfirm $package
     fi
 }
 
-# --- Copying function ---
+# Copy function with backup
 copy_config() {
-    local source_path=$1
-    local target_path=$2
-    local config_name=$3
+    local src=$1
+    local dest=$2
+    local name=$3
 
-    # Back up existing config if it's a real file/directory
-    if [ -e "$target_path" ]; then
-        echo "Backing up existing $config_name config..."
-        mv "$target_path" "${target_path}.bak_$(date +%Y%m%d_%H%M%S)"
+    if [ -e "$dest" ]; then
+        echo "Backing up existing $name → ${dest}.bak_$(date +%Y%m%d_%H%M%S)"
+        mv "$dest" "${dest}.bak_$(date +%Y%m%d_%H%M%S)"
     fi
 
-    # Create the parent directory if it doesn't exist
-    mkdir -p "$(dirname "$target_path")"
-
-    # Copy the files
-    echo "Copying $config_name..."
-    cp -r "$source_path" "$target_path"
+    mkdir -p "$(dirname "$dest")"
+    echo "Copying $name..."
+    cp -r "$src" "$dest"
 }
 
-# --- Main setup ---
-
-# Define configs to manage
-declare -A configs
-configs=(
+# CONFIG LIST
+declare -A configs=(
     ["niri"]="$HOME/.config/niri"
     ["rofi"]="$HOME/.config/rofi"
     ["eww"]="$HOME/.config/eww"
 )
 
-# Process packages and their configs
+# Install + copy each config
 for pkg in "${!configs[@]}"; do
     if ! command_exists "$pkg"; then
         install_package "$pkg"
     else
-        echo "$pkg is already installed."
+        echo "$pkg already installed."
     fi
-    copy_config "$HOME/dotfiles/.config/$pkg" "${configs[$pkg]}" "$pkg"
+
+    copy_config "$SOURCE_DIR/.config/$pkg" "${configs[$pkg]}" "$pkg"
 done
 
-# --- Handle other files ---
+# Copy bin scripts
+copy_config "$SOURCE_DIR/.local/share/bin" "$HOME/.local/share/bin" "bin scripts"
 
-# Scripts in bin
-copy_config "$HOME/dotfiles/.local/share/bin" "$HOME/.local/share/bin" "bin scripts"
+# Copy mimeapps.list
+copy_config "$SOURCE_DIR/.config/mimeapps.list" "$HOME/.config/mimeapps.list" "mimeapps.list"
 
-# mimeapps.list
-copy_config "$HOME/dotfiles/.config/mimeapps.list" "$HOME/.config/mimeapps.list" "mimeapps.list"
+# Copy dolphinrc
+copy_config "$SOURCE_DIR/.config/dolphinrc" "$HOME/.config/dolphinrc" "dolphinrc"
 
-# dolphinrc
-copy_config "$HOME/dotfiles/.config/dolphinrc" "$HOME/.config/dolphinrc" "dolphinrc"
+echo "Miles dotfiles installed successfully!"
 
-echo "Dotfiles setup complete!"
